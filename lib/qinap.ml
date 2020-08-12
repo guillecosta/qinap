@@ -101,7 +101,7 @@ let between p ~l ~r = l >> p << r
 
 (* Parsers and combinators for dealing with whitespace. ---------------------- *)
 
-let sep_by1 (p : 'a parser) ~sep:(sep : 'b parser) : 'a list parser =
+let sep_by1 p ~sep =
   let p' =
     let* _ = sep in p in
   let* x = p in
