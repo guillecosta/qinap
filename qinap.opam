@@ -1,6 +1,6 @@
 opam-version: "2.0"
 name: "qinap"
-version: "~dev"
+version: "1.0"
 synopsis: "A (very small) monadic parsing library"
 maintainer: "Guilhermo Costa <guillecosta@protonmail.ch>"
 authors: "Guilhermo Costa <guillecosta@protonmail.ch>"
@@ -12,6 +12,3 @@ depends: [
   "base"
 ]
 dev-repo: "git+https://github.com/guillecosta/qinap"
-url {
-  src: "git+file:///home/gui/Programming/qinap#master"
-}
