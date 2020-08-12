@@ -136,3 +136,30 @@ val space : char parser
     characters, returning a list of the parsed characters,
     and fails otherwise. *)
 val spaces : char list parser
+
+(** {1 Parsers and combinators for dealing with numbers} *)
+
+(** [digit] parses exactly one digit from its input
+    and fails if that is not possible. *)
+val digit : char parser
+
+(** [digits] parses zero or more digits from its input and returns them
+    a string, and fails if that is not possible. *)
+val digits : string parser
+
+(** [digits1] parses one or more digits from its input and returns them
+    a string, and fails if that is not possible. *)
+val digits1 : string parser
+
+(** [natural] parses a natural number from its input as an int
+    and fails if that is not possible. *)
+val natural : int parser
+
+(** [integer] parses an integer from its input as an int
+    and fails if that is not possible. *)
+val integer : int parser
+
+(** [float] parses a real number, written as a decimal expansion with
+    digits before and after the point, returns it as a float,
+    and fails if that is not possible. *)
+val float : float parser

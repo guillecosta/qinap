@@ -112,3 +112,30 @@ let sep_by p ~sep = (sep_by1 p ~sep) <|> result []
 
 let space = satisfy ~f:Char.is_whitespace
 let spaces = many1 space
+
+(* Parsers and combinators for dealing with numbers. ------------------------- *)
+
+let digit = satisfy ~f:Char.is_digit
+let digits = many digit => Clist.to_string
+let digits1 = many1 digit => Clist.to_string
+let natural = digits1 => Int.of_string
+
+let integer =
+  let un_op = ((char '-') >> result Int.neg)
+              <|> (result (fun x -> x)) in
+  let* op = un_op in
+  let* x = natural in
+  result (op x)
+
+let float =
+  let un_op = ((char '-') >> result Float.neg)
+              <|> (result (fun x -> x))
+  and maybe_dot = ((char '.') => Char.to_string)
+            <|> (result "") in
+  let* op = un_op in
+  let* whole = digits1 in
+  let* sep = maybe_dot in
+  let* decimal = digits1
+  in
+  result [whole; sep; decimal]
+  => String.concat => Float.of_string => op
