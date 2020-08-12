@@ -1,7 +1,0 @@
-version = "1.0"
-description = ""
-requires = "base"
-archive(byte) = "qinap.cma"
-archive(native) = "qinap.cmxa"
-plugin(byte) = "qinap.cma"
-plugin(native) = "qinap.cmxs"
