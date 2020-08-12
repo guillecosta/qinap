@@ -131,7 +131,7 @@ let float =
   let un_op = ((char '-') >> result Float.neg)
               <|> (result (fun x -> x))
   and maybe_dot = ((char '.') => Char.to_string)
-            <|> (result "") in
+                  <|> (result "") in
   let* op = un_op in
   let* whole = digits1 in
   let* sep = maybe_dot in
